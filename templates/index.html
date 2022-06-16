@@ -1,0 +1,8 @@
+<h1>Hello World!</h1>
+
+<p>This is my first Flask webpage, my name is {{ first_name }}
+</p>
+
+<h3>Name split with for loop.</h3>
+{% for letter in first_name %} {{"-" * (first_name.index(letter))}} {{ letter|upper }} {{ '-' * ((first_name|length - 1 )- first_name.index(letter))}}
+<br>{% endfor %}
