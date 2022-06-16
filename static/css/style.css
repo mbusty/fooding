@@ -1,0 +1,14 @@
+h1 {
+    color: #282828;
+    font-size: 60px;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+#demo {
+    font-size: 30px;
+    color: #282828;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
