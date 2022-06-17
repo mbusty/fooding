@@ -1,6 +1,6 @@
 # TODO: Get rid of 'user'
 
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -13,6 +13,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # Initialize DB
 db = SQLAlchemy(app)
+
+
+
+
 #Create Model for DB
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,6 +36,30 @@ class UserForm(FlaskForm):
     name = StringField("Name:", validators=[DataRequired()])
     email = StringField("Email:", validators=[DataRequired()])
     submit = SubmitField("Submit")
+
+# Update Database Record
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    form = UserForm()
+    name_to_update = Users.query.get_or_404(id)
+    if request.method == "POST":
+        name_to_update.name = request.form['name']
+        name_to_update.email = request.form['email']
+        try:
+            db.session.commit()
+            flash("User Updated Successfully!")
+            return render_template("update.html",
+                form=form,
+                name_to_update=name_to_update)
+        except:
+            flash("Error! Try again...")
+            return render_template("update.html",
+                form=form,
+                name_to_update=name_to_update)
+    else:
+        return render_template("update.html",
+                form=form,
+                name_to_update=name_to_update)
 
 # Create a Form Class
 class NamerForm(FlaskForm):

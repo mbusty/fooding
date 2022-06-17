@@ -5,18 +5,18 @@
 </div>
 
 {% endfor %} {% if name %}
-<table class="table align-middle table-hover table-bordered table-striped text">
-    <thead>
+<table class="table align-middle table-hover table-bordered table-striped">
+    <!-- <thead>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
     </tr>    
-    </thead>
+    </thead> -->
     {% for user in our_users %}
     <tr>
         <td>{{ user.id }}</td>
-        <td><a href="{{ url_for('update', id=user.id)}}">{{ user.name }}</a></td>
+        <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
     </tr>
 
@@ -24,31 +24,30 @@
 </table>
 
 {% else %}
-<h1>User List</h1>
+<h1>Update User</h1>
 <br />
 <div class="shadow p-3 mb-5 bg-body rounded">
-    <form action="" method="post">
+    <form action="/update/{{ name_to_update.id }}" method="POST">
         {{ form.hidden_tag() }}
-        {{ form.name.label( class="form-label" ) }} {{ form.name( class="form-control" ) }} <br>
-        {{ form.email.label( class="form-label" ) }} {{ form.email( class="form-control" ) }} <br>
+        {{ form.name.label( class="form-label" ) }} {{ form.name( class="form-control", value=name_to_update.name ) }} <br>
+        {{ form.email.label( class="form-label" ) }} {{ form.email( class="form-control", value=name_to_update.email ) }} <br>
         {{ form.submit( class="btn btn-secondary" ) }}
     </form>
 </div>
 <br><br><br>
 
-<h5>Click User in order to update information...</h5>
 <table class="table align-middle table-hover table-bordered table-striped text">
-    <thead>
+    <!-- <thead>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
     </tr>    
-    </thead>
+    </thead> -->
     {% for user in our_users %}
     <tr>
         <td>{{ user.id }}</td>
-        <td><a href="{{ url_for('update', id=user.id)}}">{{ user.name }}</a></td>
+        <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
     </tr>
 

@@ -3,6 +3,9 @@ h1 {
     font-size: 60px;
 }
 
+h5 {
+    color: #282828;
+}
 body {
     background: #f4f4f4;
 }
