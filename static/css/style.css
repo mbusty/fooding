@@ -12,3 +12,7 @@ body {
     color: #282828;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/* table th {
+    width: auto !important;
+} */

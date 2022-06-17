@@ -1,0 +1,10 @@
+Things for foodin actual:
+    - add_user.html
+        - entire file
+        - is the user form to take data input
+    - hello.py
+        - initializes the "Users" db
+        - creates the UserForm class
+        - app.route /user/add connects the db to the html
+    - https://youtu.be/Q2QmST-cSwc?t=579
+        - shows how to actually start the db from terminal
