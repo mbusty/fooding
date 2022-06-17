@@ -8,3 +8,9 @@ Things for foodin actual:
         - app.route /user/add connects the db to the html
     - https://youtu.be/Q2QmST-cSwc?t=579
         - shows how to actually start the db from terminal
+    - https://youtu.be/ca-Vj6kwK7M
+        - shows how to add new fields to an existing db
+    - https://youtu.be/7jKsHOZk-IE
+        - shows you how to delete records
+    - return redirect(url_for([function for page]))
+        -redirects page to 

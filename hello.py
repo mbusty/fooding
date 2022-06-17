@@ -1,6 +1,6 @@
 # TODO: Get rid of 'user'
 
-from flask import Flask, render_template, flash, request
+from flask import Flask, redirect, render_template, flash, request, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -50,16 +50,45 @@ def update(id):
             flash("User Updated Successfully!")
             return render_template("update.html",
                 form=form,
+                id=id,
                 name_to_update=name_to_update)
         except:
             flash("Error! Try again...")
             return render_template("update.html",
                 form=form,
+                id=id,
                 name_to_update=name_to_update)
     else:
         return render_template("update.html",
                 form=form,
+                id=id,
                 name_to_update=name_to_update)
+
+# Delete Database Record
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+    name = None
+    email = None
+    form = UserForm()
+    user_to_delete = Users.query.get_or_404(id)
+    try:
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        flash("User Deleted Successfully!")
+        our_users = Users.query.order_by(Users.date_added)
+        return redirect(url_for('add_user'))
+        # return render_template("add_user.html",
+        #     name = name,
+        #     email = email,
+        #     form = form,
+        #     our_users = our_users)
+    except:
+        flash("Error.. Something didn't work..")
+        return render_template("add_user.html",
+            name = name,
+            email = email,
+            form = form,
+            our_users = our_users)
 
 # Create a Form Class
 class NamerForm(FlaskForm):
@@ -119,6 +148,7 @@ def add_user():
         form.name.data = ''
         form.email.data = ''
         flash("User Added Successfully!")
+        return redirect(url_for('add_user'))
     our_users = Users.query.order_by(Users.date_added)
     return render_template("add_user.html",
         name = name,

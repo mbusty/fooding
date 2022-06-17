@@ -7,11 +7,11 @@
 {% endfor %} {% if name %}
 <table class="table align-middle table-hover table-bordered table-striped text">
     <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-    </tr>    
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
     </thead>
     {% for user in our_users %}
     <tr>
@@ -28,10 +28,8 @@
 <br />
 <div class="shadow p-3 mb-5 bg-body rounded">
     <form action="" method="post">
-        {{ form.hidden_tag() }}
-        {{ form.name.label( class="form-label" ) }} {{ form.name( class="form-control" ) }} <br>
-        {{ form.email.label( class="form-label" ) }} {{ form.email( class="form-control" ) }} <br>
-        {{ form.submit( class="btn btn-secondary" ) }}
+        {{ form.hidden_tag() }} {{ form.name.label( class="form-label" ) }} {{ form.name( class="form-control" ) }} <br> {{ form.email.label( class="form-label" ) }} {{ form.email( class="form-control" ) }} <br> {{ form.submit( class="btn btn-secondary"
+        ) }}
     </form>
 </div>
 <br><br><br>
@@ -39,11 +37,11 @@
 <h5>Click User in order to update information...</h5>
 <table class="table align-middle table-hover table-bordered table-striped text">
     <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-    </tr>    
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
     </thead>
     {% for user in our_users %}
     <tr>
